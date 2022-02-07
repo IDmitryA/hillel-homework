@@ -6,19 +6,19 @@ class Url:
         self.query = query
         self.fragment = fragment
 
-    def __eq__(self, other):
+    def __eq__(self, other):  # переопределение операции '=='
         return str(self) == str(other)
 
-    def __str__(self):
+    def __str__(self):  # формирование строки из Url
         if self.path is not None:
             p = '/' + '/'.join(self.path)
         else:
             p = ''
         if self.query is not None:
-            l = []
+            q_list = []
             for k, v in self.query.items():
-                l.append(f'{k}={v}')
-            q = '?' + '&'.join(l)
+                q_list.append(f'{k}={v}')
+            q = '?' + '&'.join(q_list)
         else:
             q = ''
         if self.fragment is not None:
