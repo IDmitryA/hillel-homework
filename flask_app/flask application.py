@@ -39,7 +39,7 @@ def rand():
         letters_list.extend(special_list)
     if int(digits):
         letters_list.extend(digits_list)
-    result = ','.join(random.sample(letters_list, int(length)))
+    result = ','.join(random.choice(letters_list) for _ in range(int(length)))
     
     return result
 
