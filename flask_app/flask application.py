@@ -33,7 +33,7 @@ def rand():
     digits = request.values.get('digits', default='1')
 
     if not all([0 <= int(length) <= 100, 0 <= int(specials) <= 1, 0 <= int(digits) <= 1]):
-        return f'Wrong input: "length" should be between 0 and 100, "specials" and "digits" should equal 0 or 1'
+        return f'Wrong input: "length" should be between 0 and 100, "specials" and "digits" should equal 0 or 1.'
 
     if int(specials):
         letters_list.extend(special_list)
