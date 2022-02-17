@@ -73,9 +73,8 @@ def rand():
         letters_list.extend(digits_list)
     result = ','.join(random.choice(letters_list) for _ in range(int(length)))
 
-    if not all([0 <= int(length) <= 100, 0 <= int(specials) <= 1, 0 <= int(digits) <= 1]):
-        result = 'Wrong input:<br/> "length" should be between 0 and 100<br/> "specials" and "digits"' \
-                 ' should equal 0 or 1'
+    if not 0 <= int(length) <= 100:
+        result = 'Wrong input:<br/> "length" should be between 0 and 100'
 
     return f'''
     <html>
@@ -83,14 +82,27 @@ def rand():
         Homework №7
         </title>
         <head>
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <form>
-        length: <input name="length" />
+        Length: <br/>
+        <input name="length" />
         <br/>
-        specials: <input name="specials" value="0"/>
+        Specials: <select class="form-select" aria-label="Default select example" input name="specials">
+                  <option selected>Add special symbols?</option>
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                  </select>
         <br/>
-        digits: <input name="digits" value="1"/>
+        Digits: <select class="form-select" aria-label="Default select example" input name="digits">
+                  <option selected>Add digits?</option>
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                  </select>
         <br/>
-        <input type="submit" />
+        <input type="submit" value="Get string"/>
         </form>
         {result}
         </head>
